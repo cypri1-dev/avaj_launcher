@@ -24,21 +24,25 @@ public class Parser {
 		return true;
 	}
 
-	public static void readFile(String file) {
+	public static Scanner readFile(String file) {
 		File myFile = new File(file);
 
-		try (Scanner myReader = new Scanner(myFile)) {
+		if (!myFile.exists()) {
+			System.err.println(ORANGE_BOLD + "The given file doesn't exists!" + RESET);
+			return null;
+		}
+
+		try {
+			Scanner myReader = new Scanner(myFile);
 			if (!myReader.hasNextLine()) {
 				System.err.println(ORANGE_BOLD + "Provided file is empty!" + RESET);
-				return;
+				return null;
 			}
-			while (myReader.hasNextLine()) {
-				String data = myReader.nextLine();
-				System.out.println(data);
-			}
+			return myReader;
 		} catch (FileNotFoundException e) {
-			System.err.println(ORANGE_BOLD + "The given file doesn't exists!" + RESET);
-			// e.printStackTrace();
+			e.printStackTrace();
 		}
+		return null;
+
 	}
 }
