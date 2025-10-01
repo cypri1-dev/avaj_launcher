@@ -7,7 +7,7 @@ import static mypackage.Colors.*;
 
 public class Extractor {
 
-	public static boolean extractValues(String[] values, String line, List<String> nameAircraft) {
+	public static boolean extractValues(String[] values, String line, List<String> nameAircraftList) {
 		/* Checks longitude - latitude and height */
 		int longitude = -1;
 		int latitude = -1;
@@ -26,13 +26,14 @@ public class Extractor {
 			return false;
 		}
 		/* Checks aircraft's name */
-		for (String name : nameAircraft) {
-			if (name.equals(values[1])) {
-				System.out.println(ORANGE_BOLD + "Error: name already exists: " + values[1] + RESET);
+		String nameAircraft = values[1];
+		for (String name : nameAircraftList) {
+			if (name.equals(nameAircraft)) {
+				System.out.println(ORANGE_BOLD + "Error: name already exists: " + nameAircraft + RESET);
 				return false;
 			}
 		}
-		nameAircraft.add(values[1]);
+		nameAircraftList.add(nameAircraft);
 		/* This switch statement will be placed at the end of method: 
 		first check if values are OK, if so, will create the associated object */
 		switch (values[0]) {
@@ -71,7 +72,7 @@ public class Extractor {
 		
 		/*Extract data for each line - stop if error */
 		String regex = "\\s+";
-		List<String> nameAircraft = new ArrayList<>();
+		List<String> nameAircraftList = new ArrayList<>();
 		
 		while (myReader.hasNextLine()) {
 			String line = myReader.nextLine();
@@ -85,10 +86,10 @@ public class Extractor {
 			for (String s : lineArray) {
 				System.out.println(DEBUG_BOLD + "splited line: " + s);
 			}
-			if (!extractValues(lineArray, line, nameAircraft))
+			if (!extractValues(lineArray, line, nameAircraftList))
 			return false;
 		}
-		for (String elem : nameAircraft) {
+		for (String elem : nameAircraftList) {
 			System.out.println(DEBUG_BOLD + "name of the aircraft: " +elem);
 		}
 		sim.setNbSimulation(nbLoop);
