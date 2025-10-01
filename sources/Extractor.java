@@ -36,7 +36,8 @@ public class Extractor {
 		nameAircraftList.add(nameAircraft);
 		/* This switch statement will be placed at the end of method: 
 		first check if values are OK, if so, will create the associated object */
-		switch (values[0]) {
+		String typeAircraft = values[0];
+		switch (typeAircraft) {
 			case "Baloon":
 				System.out.println(GREEN_BOLD + "OK - Baloon" + RESET);
 				break;
