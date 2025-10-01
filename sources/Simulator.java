@@ -1,7 +1,6 @@
 package sources;
 
 import static mypackage.Colors.DEBUG_BOLD;
-
 import java.util.Scanner;
 
 public class Simulator {
@@ -38,6 +37,5 @@ public class Simulator {
 		System.out.println(DEBUG_BOLD + "longitude: " + H1.coordinates.getLongitude());
 		System.out.println(DEBUG_BOLD + "latitude: " + H1.coordinates.getLatitude());
 		System.out.println(DEBUG_BOLD + "height: " + H1.coordinates.getHeight());
-
 	}
 }
