@@ -1,3 +1,5 @@
+package sources;
+
 import static mypackage.Colors.*;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -8,15 +10,15 @@ public class Parser {
 	public static boolean checkerArgs(String[] args) {
 
 		if (args.length == 0) {
-			System.err.println(RED_BOLD + "No simulation provided!" + RESET);
+			System.out.println(RED_BOLD + "No simulation provided!" + RESET);
 			return false;
 		}
 		else if (args.length != 1) {
-			System.err.println(RED_BOLD + "More than one argument provided!" + RESET);
+			System.out.println(RED_BOLD + "More than one argument provided!" + RESET);
 			return false;
 		}
 		else if (!args[0].endsWith(".txt")) {
-			System.err.println(RED_BOLD + "Simulation format file must be .txt!" + RESET);
+			System.out.println(RED_BOLD + "Simulation format file must be .txt!" + RESET);
 			return false;
 		}
 		System.out.println(GREEN_BOLD + "Format file OK..." + RESET);
@@ -28,14 +30,14 @@ public class Parser {
 		File myFile = new File(file);
 
 		if (!myFile.exists()) {
-			System.err.println(ORANGE_BOLD + "The given file doesn't exists!" + RESET);
+			System.out.println(ORANGE_BOLD + "The given file doesn't exists!" + RESET);
 			return null;
 		}
 
 		try {
 			Scanner myReader = new Scanner(myFile);
 			if (!myReader.hasNextLine()) {
-				System.err.println(ORANGE_BOLD + "Provided file is empty!" + RESET);
+				System.out.println(ORANGE_BOLD + "Provided file is empty!" + RESET);
 				return null;
 			}
 			return myReader;
@@ -43,6 +45,5 @@ public class Parser {
 			e.printStackTrace();
 		}
 		return null;
-
 	}
 }

@@ -1,3 +1,7 @@
+package sources;
+
+import static mypackage.Colors.DEBUG_BOLD;
+
 import java.util.Scanner;
 
 public class Simulator {
@@ -7,6 +11,10 @@ public class Simulator {
 	public void setNbSimulation(int nb) {
 		this.nbSimulation = nb;
 	}
+
+	public int getNbSimulation() {
+		return this.nbSimulation;
+	}
 	public static void main(String[] args) {
 
 		Scanner data;
@@ -15,10 +23,10 @@ public class Simulator {
 
 		Simulator sim = new Simulator();
 		data = Parser.readFile(args[0]);
-		// if (data != null)
-		// 	System.out.println("YES");
-		// else
-		// 	System.out.println("NO");
-		Extractor.extractData(data);
+		if (data == null)
+			return;
+		if (!Extractor.extractData(data, sim))
+			return;
+		System.out.println(DEBUG_BOLD + "sim.nbSimulation: " + sim.getNbSimulation());
 	}
 }
