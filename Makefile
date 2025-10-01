@@ -15,7 +15,7 @@ compile: $(SOURCES_TXT)
 	@javac @$(SOURCES_TXT)
 
 clean:
-	@echo "Cleaning .class files"
+	@echo "Cleaning .class files..."
 	@find $(SRC_DIR) -name "*.class" -delete
 	@find $(PKG_DIR) -name "*.class" -delete
 	@rm -f $(SOURCES_TXT)
