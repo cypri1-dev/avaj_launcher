@@ -89,9 +89,9 @@ public class Extractor {
 			if (!extractValues(lineArray, line, nameAircraftList))
 			return false;
 		}
-		for (String elem : nameAircraftList) {
-			System.out.println(DEBUG_BOLD + "name of the aircraft: " +elem);
-		}
+		// for (String elem : nameAircraftList) {
+		// 	System.out.println(DEBUG_BOLD + "name of the aircraft: " +elem);
+		// }
 		sim.setNbSimulation(nbLoop);
 		return true;
 	}
