@@ -1,6 +1,6 @@
 package sources;
 
-public class Aircraft {
+public class Aircraft extends Flyable {
 
 	protected long id;
 	protected String name;
@@ -11,6 +11,9 @@ public class Aircraft {
 		this.name = p_name;
 		this.coordinates = p_coodinates;
 	}
+
+	/* Must be declared here but empty - will be overrided in children */
+	public void updateConditions() {}
 
 	/* May add method to create unique id */
 }
