@@ -5,5 +5,12 @@ public abstract class Flyable {
 	//protected WeatherTower weatherTower;
 	
 	public abstract void updateConditions();
-	// public void registerTower(WeatherTower* p_tower);
+
+	// need to add those abstact method in order to register in Tower!
+	public abstract String getName();
+	public abstract long getId();
+	public abstract String getType();
+	// public abstract String getType();
+	
+	// public void registerTower(WeatherTower p_tower);
 }
