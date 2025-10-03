@@ -7,7 +7,7 @@ import static mypackage.Colors.*;
 
 public class Extractor {
 
-	public static boolean extractValues(String[] values, String line, List<String> nameAircraftList) {
+	public static boolean extractValues(String[] values, String line, List<String> nameAircraftList, Tower controlTower) {
 		/* Checks longitude - latitude and height */
 		int longitude = -1;
 		int latitude = -1;
@@ -35,16 +35,27 @@ public class Extractor {
 		}
 		nameAircraftList.add(nameAircraft);
 		/* This switch statement will be placed at the end of method: 
-		first check if values are OK, if so, will create the associated object */
+		first check if values are OK, if so, will create the associated object 
+		
+		-- UPDATE --
+
+		Need to link this part with AircraftFactory - DONE */
+
 		String typeAircraft = values[0];
+		Coordinates initCoordinates = new Coordinates(longitude, latitude, height);;
+		
+		// need to add the new aircraft in tower
 		switch (typeAircraft) {
 			case "Baloon":
+				controlTower.register(AircraftFactory.getInstance().newAircraft(typeAircraft, nameAircraft, initCoordinates));
 				System.out.println(GREEN_BOLD + "OK - Baloon" + RESET);
 				break;
 			case "JetPlane":
+				controlTower.register(AircraftFactory.getInstance().newAircraft(typeAircraft, nameAircraft, initCoordinates));
 				System.out.println(GREEN_BOLD + "OK - JetPlane" + RESET);
 				break;
 			case "Helicopter":
+				controlTower.register(AircraftFactory.getInstance().newAircraft(typeAircraft, nameAircraft, initCoordinates));
 				System.out.println(GREEN_BOLD + "OK - Helicopter" + RESET);
 				break;
 			default:
@@ -54,7 +65,7 @@ public class Extractor {
 		return true;
 	}
 
-	public static boolean extractData(Scanner myReader, Simulator sim) {
+	public static boolean extractData(Scanner myReader, Simulator sim, Tower controlTower) {
 		/* Extract nb of loop simulation */
 		int nbLoop = 0;
 		String fisrtLine = myReader.nextLine();
@@ -87,11 +98,11 @@ public class Extractor {
 			for (String s : lineArray) {
 				System.out.println(DEBUG_BOLD + "splited line: " + s);
 			}
-			if (!extractValues(lineArray, line, nameAircraftList))
-			return false;
+			if (!extractValues(lineArray, line, nameAircraftList, controlTower))
+				return false;
 		}
 		// for (String elem : nameAircraftList) {
-		// 	System.out.println(DEBUG_BOLD + "name of the aircraft: " +elem);
+		// 	System.out.println(DEBUG_BOLD + "name of the aircraft: " + elem);
 		// }
 		sim.setNbSimulation(nbLoop);
 		return true;
