@@ -2,7 +2,7 @@ package sources;
 
 public abstract class Flyable {
 	
-	//protected WeatherTower weatherTower;
+	protected WeatherTower weatherTower;
 	
 	public abstract void updateConditions();
 
@@ -10,7 +10,8 @@ public abstract class Flyable {
 	public abstract String getName();
 	public abstract long getId();
 	public abstract String getType();
-	// public abstract String getType();
 	
-	// public void registerTower(WeatherTower p_tower);
+	public void registerTower(WeatherTower p_tower) {
+		this.weatherTower = p_tower;
+	}
 }
