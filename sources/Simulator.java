@@ -1,6 +1,6 @@
 package sources;
 
-import static mypackage.Colors.DEBUG_BOLD;
+import static mypackage.Colors.*;
 import java.util.Scanner;
 
 public class Simulator {
@@ -32,7 +32,7 @@ public class Simulator {
 
 		// System.out.println(DEBUG_BOLD + "sim.nbSimulation: " + sim.getNbSimulation());
 			
-		// Coordinates coor = new Coordinates(23, 12, 43);
+		Coordinates coor = new Coordinates(23, 12, 43);
 		// Helicopter H1 = new Helicopter(1234, "testHelico", coor);
 		// JetPlane J1 = new JetPlane(12345, "testJetPlane", coor);
 		// Baloon B1 = new Baloon(12346, "testBaloon", coor);
@@ -58,6 +58,7 @@ public class Simulator {
 		// System.out.println(DEBUG_BOLD + "latitude: " + B1.coordinates.getLatitude());
 		// System.out.println(DEBUG_BOLD + "height: " + B1.coordinates.getHeight());
 		
-		controlTower.printListRegisteredFlyable();
+		// controlTower.printListRegisteredFlyable();
+		WeatherProvider.getInstance().getCurrentWeather(coor);
 	}
 }
