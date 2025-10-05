@@ -23,4 +23,16 @@ public class Coordinates {
 	public int getHeight() {
 		return this.height;
 	}
+
+	public void updateLongitude(int update) {
+		this.longitude += update;
+	}
+
+	public void updateLatitude(int update) {
+		this.latitude += update;
+	}
+
+	public void updateHeight(int update) {
+		this.height += update;
+	}
 }
