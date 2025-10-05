@@ -48,15 +48,15 @@ public class Extractor {
 		switch (typeAircraft) {
 			case "Baloon":
 				controlTower.register(AircraftFactory.getInstance().newAircraft(typeAircraft, nameAircraft, initCoordinates));
-				System.out.println(GREEN_BOLD + "OK - Baloon" + RESET);
+				// System.out.println(GREEN_BOLD + "OK - Baloon" + RESET);
 				break;
 			case "JetPlane":
 				controlTower.register(AircraftFactory.getInstance().newAircraft(typeAircraft, nameAircraft, initCoordinates));
-				System.out.println(GREEN_BOLD + "OK - JetPlane" + RESET);
+				// System.out.println(GREEN_BOLD + "OK - JetPlane" + RESET);
 				break;
 			case "Helicopter":
 				controlTower.register(AircraftFactory.getInstance().newAircraft(typeAircraft, nameAircraft, initCoordinates));
-				System.out.println(GREEN_BOLD + "OK - Helicopter" + RESET);
+				// System.out.println(GREEN_BOLD + "OK - Helicopter" + RESET);
 				break;
 			default:
 				System.out.println(ORANGE_BOLD + "Error: unknown aircraft!" + RESET);
@@ -69,7 +69,7 @@ public class Extractor {
 		/* Extract nb of loop simulation */
 		int nbLoop = 0;
 		String fisrtLine = myReader.nextLine();
-		System.out.println(DEBUG_BOLD + "fisrt line: " + fisrtLine);
+		// System.out.println(DEBUG_BOLD + "fisrt line: " + fisrtLine);
 		try {
 			nbLoop = Integer.parseInt(fisrtLine);
 		}
@@ -88,16 +88,16 @@ public class Extractor {
 		
 		while (myReader.hasNextLine()) {
 			String line = myReader.nextLine();
-			System.out.println(line);
+			// System.out.println(line);
 			String[] lineArray = line.split(regex);
 			
 			if (lineArray.length != 5) {
 				System.out.println(ORANGE_BOLD + "Error: wrong data at this line: " + line);
 				return false;
 			}
-			for (String s : lineArray) {
-				System.out.println(DEBUG_BOLD + "splited line: " + s);
-			}
+			// for (String s : lineArray) {
+			// 	System.out.println(DEBUG_BOLD + "splited line: " + s);
+			// }
 			if (!extractValues(lineArray, line, nameAircraftList, controlTower))
 				return false;
 		}
