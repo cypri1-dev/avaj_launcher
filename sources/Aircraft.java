@@ -28,6 +28,10 @@ public class Aircraft extends Flyable {
 		return this.id;
 	}
 
+	public Coordinates getCoordinates() {
+		return this.coordinates;
+	}
+
 	/* Must be declared here but empty - will be overrided in children */
 	public void updateConditions() {}
 }
