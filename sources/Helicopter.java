@@ -13,26 +13,36 @@ public class Helicopter extends Aircraft {
 	public void updateConditions() {
 		String currentWeather = this.weatherTower.getWeather(this.getCoordinates());
 		String formatName = this.getType() + "#" + this.getName() + "(" + this.getId() + ")";
+		String fileOut = "simulation.txt";
+		String txtSun = formatName + ": Sun's blazing! Perfect day for a tan at 10,000 feet!";
+		String txtRain = formatName + ": It's pouring! Should've brought a bigger windshield wiper!";
+		String txtFog = formatName + ": Can't see a thing... hope this isn't a mountain ahead!";
+		String txtSnow = formatName + ": It's snowing like crazy! Turning into a flying popsicle!";
+		String txtLanded = formatName + ": Landed."; 
 
 		switch (currentWeather) {
 			case("SUN"):
 				this.coordinates.updateLongitude(10);
 				this.coordinates.updateHeight(2);
-				System.out.println(formatName + ": Sun’s blazing! Perfect day for a tan at 10,000 feet!");
+
+				printToFileTxt(txtSun, fileOut); 
 				break;
 			case("RAIN"):
 				this.coordinates.updateLongitude(5);
-				System.out.println(formatName + ": It's pouring! Should’ve brought a bigger windshield wiper!");
+
+				printToFileTxt(txtRain, fileOut);
 				break;
 			case("FOG"):
 				this.coordinates.updateLongitude(1);
-				System.out.println(formatName + ": Can’t see a thing… hope this isn’t a mountain ahead!");
+
+				printToFileTxt(txtFog, fileOut);
 				break;
 			case("SNOW"):
 				this.coordinates.updateHeight(-12);
-				System.out.println(formatName + ": It’s snowing like crazy! Turning into a flying popsicle!");
+
+				printToFileTxt(txtSnow, fileOut);
 				if (this.coordinates.getHeight() <= 0) {
-					System.out.println(formatName + ": Landed.");
+					printToFileTxt(txtLanded, fileOut);
 					this.weatherTower.unregister(this);
 				}
 				break;

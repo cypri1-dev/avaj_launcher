@@ -4,6 +4,10 @@ import static mypackage.Colors.DEBUG_BOLD;
 import static mypackage.Colors.ORANGE_BOLD;
 import static mypackage.Colors.RESET;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class Baloon extends Aircraft {
 
 	public Baloon(long p_id, String p_name, Coordinates p_coordinate) {
@@ -15,34 +19,43 @@ public class Baloon extends Aircraft {
 	public void updateConditions() {
 		String currentWeather = this.weatherTower.getWeather(this.getCoordinates());
 		String formatName = this.getType() + "#" + this.getName() + "(" + this.getId() + ")";
+		String fileOut = "simulation.txt";
+		String txtSun = formatName + ": Sun's blazing! Perfect day for a tan at 10,000 feet!";
+		String txtRain = formatName + ": It's pouring! Should've brought a bigger windshield wiper!";
+		String txtFog = formatName + ": Can't see a thing... hope this isn't a mountain ahead!";
+		String txtSnow = formatName + ": It's snowing like crazy! Turning into a flying popsicle!";
+		String txtLanded = formatName + ": Landed."; 
 
 		switch (currentWeather) {
 			case("SUN"):
 				this.coordinates.updateLongitude(2);
 				this.coordinates.updateHeight(4);
-				System.out.println(formatName + ": Sun’s blazing! Perfect day for a tan at 10,000 feet!");
+
+				printToFileTxt(txtSun, fileOut);
 				break;
 			case("RAIN"):
 				this.coordinates.updateHeight(-5);
-				System.out.println(formatName + ": It's pouring! Should’ve brought a bigger windshield wiper!");
+				printToFileTxt(txtRain, fileOut);
+
 				if (this.coordinates.getHeight() <= 0) {
-					System.out.println(formatName + ": Landed.");
+					printToFileTxt(txtLanded, fileOut);
 					this.weatherTower.unregister(this);
 				}
 				break;
 			case("FOG"):
 				this.coordinates.updateHeight(-3);
-				System.out.println(formatName + ": Can’t see a thing… hope this isn’t a mountain ahead!");
+
+				printToFileTxt(txtFog, fileOut);
 				if (this.coordinates.getHeight() <= 0) {
-					System.out.println(formatName + ": Landed.");
+					printToFileTxt(txtLanded, fileOut);
 					this.weatherTower.unregister(this);
 				}
-				break;
 			case("SNOW"):
 				this.coordinates.updateHeight(-15);
-				System.out.println(formatName + ": It’s snowing like crazy! Turning into a flying popsicle!");
+				
+				printToFileTxt(txtSnow, fileOut);
 				if (this.coordinates.getHeight() <= 0) {
-					System.out.println(formatName + ": Landed.");
+					printToFileTxt(txtLanded, fileOut);
 					this.weatherTower.unregister(this);
 				}
 				break;
