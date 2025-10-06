@@ -7,7 +7,7 @@ import static mypackage.Colors.*;
 
 public class Extractor {
 
-	public static void setValues(String[] values, Tower controlTower) {
+	public static void setValues(String[] values, WeatherTower weatherTower) {
 		/* set values for each aircraft */
 		String typeAircraft = values[0];
 		String nameAircraft = values[1];
@@ -19,13 +19,13 @@ public class Extractor {
 
 		switch (typeAircraft) {
 			case "Baloon":
-				controlTower.register(AircraftFactory.getInstance().newAircraft(typeAircraft, nameAircraft, initCoordinates));
+				weatherTower.register(AircraftFactory.getInstance().newAircraft(typeAircraft, nameAircraft, initCoordinates));
 				break;
 			case "JetPlane":
-				controlTower.register(AircraftFactory.getInstance().newAircraft(typeAircraft, nameAircraft, initCoordinates));
+				weatherTower.register(AircraftFactory.getInstance().newAircraft(typeAircraft, nameAircraft, initCoordinates));
 				break;
 			case "Helicopter":
-				controlTower.register(AircraftFactory.getInstance().newAircraft(typeAircraft, nameAircraft, initCoordinates));
+				weatherTower.register(AircraftFactory.getInstance().newAircraft(typeAircraft, nameAircraft, initCoordinates));
 				break;
 			default:
 				System.out.println(ORANGE_BOLD + "Error: unknown aircraft!" + RESET);
@@ -78,7 +78,7 @@ public class Extractor {
 		return true;
 	}
 
-	public static List<String> checkData(Scanner myReader, Simulator sim, Tower controlTower) {
+	public static List<String> checkData(Scanner myReader, Simulator sim) {
 		/* Extract nb of loop simulation */
 		int nbLoop = 0;
 		String fisrtLine = myReader.nextLine();
