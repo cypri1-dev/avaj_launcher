@@ -1,6 +1,9 @@
 package sources;
 
 import static mypackage.Colors.*;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Simulator {
@@ -16,21 +19,30 @@ public class Simulator {
 	}
 	public static void main(String[] args) {
 
-		Scanner data;
+		Scanner file;
 		if (!Parser.checkerArgs(args))
 			return;
 
 		Simulator sim = new Simulator();
 		Tower controlTower = new Tower();
-		data = Parser.readFile(args[0]);
+		List<String> data = new ArrayList<>();
+
+		file = Parser.readFile(args[0]);
+		if (file == null)
+			return;
+		
+		data = Extractor.checkData(file, sim, controlTower);
 		if (data == null)
 			return;
-		if (!Extractor.extractData(data, sim, controlTower))
-			return;
-			
+
+		for (String dataLine : data) {
+			String[] lineArray = dataLine.split("\\s+");
+			Extractor.setValues(lineArray, controlTower);
+		}
+
 		/* -------------------------------- TESTS PART -------------------------------- */
 
-		// System.out.println(DEBUG_BOLD + "sim.nbSimulation: " + sim.getNbSimulation());
+		System.out.println(DEBUG_BOLD + "sim.nbSimulation: " + sim.getNbSimulation());
 			
 		Coordinates coor = new Coordinates(23, 12, 43);
 		// Helicopter H1 = new Helicopter(1234, "testHelico", coor);
@@ -58,7 +70,7 @@ public class Simulator {
 		// System.out.println(DEBUG_BOLD + "latitude: " + B1.coordinates.getLatitude());
 		// System.out.println(DEBUG_BOLD + "height: " + B1.coordinates.getHeight());
 		
-		// controlTower.printListRegisteredFlyable();
+		controlTower.printListRegisteredFlyable();
 		WeatherProvider.getInstance().getCurrentWeather(coor);
 	}
 }

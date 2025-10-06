@@ -7,7 +7,32 @@ import static mypackage.Colors.*;
 
 public class Extractor {
 
-	public static boolean extractValues(String[] values, String line, List<String> nameAircraftList, Tower controlTower) {
+	public static void setValues(String[] values, Tower controlTower) {
+		/* set values for each aircraft */
+		String typeAircraft = values[0];
+		String nameAircraft = values[1];
+		int longitude = Integer.parseInt(values[2]);
+		int latitude = Integer.parseInt(values[3]);
+		int height = Integer.parseInt(values[4]);
+
+		Coordinates initCoordinates = new Coordinates(longitude, latitude, height);
+
+		switch (typeAircraft) {
+			case "Baloon":
+				controlTower.register(AircraftFactory.getInstance().newAircraft(typeAircraft, nameAircraft, initCoordinates));
+				break;
+			case "JetPlane":
+				controlTower.register(AircraftFactory.getInstance().newAircraft(typeAircraft, nameAircraft, initCoordinates));
+				break;
+			case "Helicopter":
+				controlTower.register(AircraftFactory.getInstance().newAircraft(typeAircraft, nameAircraft, initCoordinates));
+				break;
+			default:
+				System.out.println(ORANGE_BOLD + "Error: unknown aircraft!" + RESET);
+		}
+	}
+
+	public static boolean checkValues(String[] values, String line, List<String> nameAircraftList) {
 		/* Checks longitude - latitude and height */
 		int longitude = -1;
 		int latitude = -1;
@@ -34,29 +59,17 @@ public class Extractor {
 			}
 		}
 		nameAircraftList.add(nameAircraft);
-		/* This switch statement will be placed at the end of method: 
-		first check if values are OK, if so, will create the associated object 
-		
-		-- UPDATE --
-
-		Need to link this part with AircraftFactory - DONE */
-
 		String typeAircraft = values[0];
-		Coordinates initCoordinates = new Coordinates(longitude, latitude, height);;
 		
-		// need to add the new aircraft in tower
 		switch (typeAircraft) {
 			case "Baloon":
-				controlTower.register(AircraftFactory.getInstance().newAircraft(typeAircraft, nameAircraft, initCoordinates));
-				// System.out.println(GREEN_BOLD + "OK - Baloon" + RESET);
+				System.out.println("Aircraft type: " + ITALIC + "-Baloon-..." + RESET + GREEN_BOLD + "OK" + RESET);
 				break;
 			case "JetPlane":
-				controlTower.register(AircraftFactory.getInstance().newAircraft(typeAircraft, nameAircraft, initCoordinates));
-				// System.out.println(GREEN_BOLD + "OK - JetPlane" + RESET);
+				System.out.println("Aircraft type: " + ITALIC + "-JetPlane-..." + RESET + GREEN_BOLD + "OK" + RESET);
 				break;
 			case "Helicopter":
-				controlTower.register(AircraftFactory.getInstance().newAircraft(typeAircraft, nameAircraft, initCoordinates));
-				// System.out.println(GREEN_BOLD + "OK - Helicopter" + RESET);
+				System.out.println("Aircraft type: " + ITALIC + "-Helicopter-..." + RESET + GREEN_BOLD + "OK" + RESET);
 				break;
 			default:
 				System.out.println(ORANGE_BOLD + "Error: unknown aircraft!" + RESET);
@@ -65,46 +78,41 @@ public class Extractor {
 		return true;
 	}
 
-	public static boolean extractData(Scanner myReader, Simulator sim, Tower controlTower) {
+	public static List<String> checkData(Scanner myReader, Simulator sim, Tower controlTower) {
 		/* Extract nb of loop simulation */
 		int nbLoop = 0;
 		String fisrtLine = myReader.nextLine();
-		// System.out.println(DEBUG_BOLD + "fisrt line: " + fisrtLine);
+
 		try {
 			nbLoop = Integer.parseInt(fisrtLine);
 		}
 		catch(NumberFormatException e) {
 			System.out.println(ORANGE_BOLD + "Error: line 1: number of simulation must be int type" + RESET);
-			return false;
+			return null;
 		}
 		if (nbLoop <= 0) {
 			System.out.println(ORANGE_BOLD + "Error: line 1: number of simulation must be a positive int value: " + nbLoop + RESET);
-			return false;
+			return null;
 		}
 		
 		/*Extract data for each line - stop if error */
 		String regex = "\\s+";
 		List<String> nameAircraftList = new ArrayList<>();
+		List<String> copyData = new ArrayList<>();
 		
 		while (myReader.hasNextLine()) {
 			String line = myReader.nextLine();
-			// System.out.println(line);
+			copyData.add(line);
 			String[] lineArray = line.split(regex);
 			
 			if (lineArray.length != 5) {
 				System.out.println(ORANGE_BOLD + "Error: wrong data at this line: " + line);
-				return false;
+				return null;
 			}
-			// for (String s : lineArray) {
-			// 	System.out.println(DEBUG_BOLD + "splited line: " + s);
-			// }
-			if (!extractValues(lineArray, line, nameAircraftList, controlTower))
-				return false;
+			if (!checkValues(lineArray, line, nameAircraftList))
+				return null;
 		}
-		// for (String elem : nameAircraftList) {
-		// 	System.out.println(DEBUG_BOLD + "name of the aircraft: " + elem);
-		// }
 		sim.setNbSimulation(nbLoop);
-		return true;
+		return copyData;
 	}
 }
