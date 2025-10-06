@@ -1,5 +1,9 @@
 package sources;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class Aircraft extends Flyable {
 
 	protected long id;
@@ -12,6 +16,16 @@ public class Aircraft extends Flyable {
 		this.name = p_name;
 		this.coordinates = p_coodinates;
 		this.type = "defaultType";
+	}
+
+	public void printToFileTxt(String msg, String fileOut) {
+	try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileOut, true))) {
+				writer.write(msg);
+				writer.newLine();
+			}
+			catch (IOException e) {
+				e.printStackTrace();
+			}
 	}
 	
 	public String getType() {
