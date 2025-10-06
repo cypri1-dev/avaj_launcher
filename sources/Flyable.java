@@ -10,6 +10,7 @@ public abstract class Flyable {
 	public abstract String getName();
 	public abstract long getId();
 	public abstract String getType();
+	public abstract int getHeight();
 	
 	public void registerTower(WeatherTower p_tower) {
 		this.weatherTower = p_tower;
