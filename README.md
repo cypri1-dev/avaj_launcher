@@ -13,8 +13,6 @@ It aims to simulate aircraft flights according to predefined scenarios while app
 - [Scenarios](#scenarios)
 - [UML Diagrams](#uml-diagrams)
 - [Design Patterns](#design-patterns)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Description
 
@@ -82,3 +80,158 @@ Helicopter H4 223 23 54
 ## UML Diagrams
 
 UML diagrams illustrate the class structure and interactions, showing the system architecture and relationships between entities.
+![UML Diagram](doc/avaj_uml.png)
+
+## Design Patterns
+
+The project applies the following design patterns:
+- Observer: For managing notifications between objects
+- Singleton: To ensure a single instance of a class
+- Factory: For creating objects without specifying the exact class
+
+## Output example
+
+scenario.txt example:
+```bash
+Tower says: Baloon#B1(1) registered to weather tower.
+Tower says: Baloon#B2(2) registered to weather tower.
+Tower says: JetPlane#J1(3) registered to weather tower.
+Tower says: Helicopter#H1(4) registered to weather tower.
+Tower says: Helicopter#H2(5) registered to weather tower.
+Tower says: Helicopter#H3(6) registered to weather tower.
+Tower says: Baloon#B3(7) registered to weather tower.
+Tower says: JetPlane#J2(8) registered to weather tower.
+Tower says: Helicopter#H4(9) registered to weather tower.
+Baloon#B1(1): Can't see a thing... hope this isn't a mountain ahead!
+Baloon#B1(1): It's snowing like crazy! Turning into a flying popsicle!
+Baloon#B2(2): It's snowing like crazy! Turning into a flying popsicle!
+JetPlane#J1(3): It's snowing like crazy! Turning into a flying popsicle!
+Helicopter#H1(4): It's snowing like crazy! Turning into a flying popsicle!
+Helicopter#H2(5): It's snowing like crazy! Turning into a flying popsicle!
+Helicopter#H3(6): Can't see a thing... hope this isn't a mountain ahead!
+Baloon#B3(7): Sun's blazing! Perfect day for a tan at 10,000 feet!
+JetPlane#J2(8): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Helicopter#H4(9): It's pouring! Should've brought a bigger windshield wiper!
+Baloon#B1(1): It's snowing like crazy! Turning into a flying popsicle!
+Baloon#B1(1): Landed.
+Tower says: Baloon#B1(1) unregistered from weather tower.
+Baloon#B2(2): It's pouring! Should've brought a bigger windshield wiper!
+JetPlane#J1(3): It's pouring! Should've brought a bigger windshield wiper!
+Helicopter#H1(4): It's snowing like crazy! Turning into a flying popsicle!
+Helicopter#H1(4): Landed.
+Tower says: Helicopter#H1(4) unregistered from weather tower.
+Helicopter#H2(5): It's snowing like crazy! Turning into a flying popsicle!
+Helicopter#H3(6): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Baloon#B3(7): It's pouring! Should've brought a bigger windshield wiper!
+JetPlane#J2(8): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Helicopter#H4(9): Can't see a thing... hope this isn't a mountain ahead!
+Baloon#B2(2): It's snowing like crazy! Turning into a flying popsicle!
+JetPlane#J1(3): Can't see a thing... hope this isn't a mountain ahead!
+Helicopter#H2(5): It's snowing like crazy! Turning into a flying popsicle!
+Helicopter#H3(6): Can't see a thing... hope this isn't a mountain ahead!
+Baloon#B3(7): It's snowing like crazy! Turning into a flying popsicle!
+JetPlane#J2(8): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Helicopter#H4(9): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Baloon#B2(2): It's pouring! Should've brought a bigger windshield wiper!
+JetPlane#J1(3): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Helicopter#H2(5): It's snowing like crazy! Turning into a flying popsicle!
+Helicopter#H2(5): Landed.
+Tower says: Helicopter#H2(5) unregistered from weather tower.
+Helicopter#H3(6): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Baloon#B3(7): It's pouring! Should've brought a bigger windshield wiper!
+JetPlane#J2(8): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Helicopter#H4(9): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Baloon#B2(2): It's snowing like crazy! Turning into a flying popsicle!
+JetPlane#J1(3): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Helicopter#H3(6): It's pouring! Should've brought a bigger windshield wiper!
+Baloon#B3(7): It's snowing like crazy! Turning into a flying popsicle!
+Baloon#B3(7): Landed.
+Tower says: Baloon#B3(7) unregistered from weather tower.
+JetPlane#J2(8): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Helicopter#H4(9): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Baloon#B2(2): It's pouring! Should've brought a bigger windshield wiper!
+JetPlane#J1(3): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Helicopter#H3(6): Can't see a thing... hope this isn't a mountain ahead!
+JetPlane#J2(8): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Helicopter#H4(9): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Baloon#B2(2): It's snowing like crazy! Turning into a flying popsicle!
+Baloon#B2(2): Landed.
+Tower says: Baloon#B2(2) unregistered from weather tower.
+JetPlane#J1(3): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Helicopter#H3(6): Sun's blazing! Perfect day for a tan at 10,000 feet!
+JetPlane#J2(8): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Helicopter#H4(9): Sun's blazing! Perfect day for a tan at 10,000 feet!
+JetPlane#J1(3): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Helicopter#H3(6): It's pouring! Should've brought a bigger windshield wiper!
+JetPlane#J2(8): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Helicopter#H4(9): Sun's blazing! Perfect day for a tan at 10,000 feet!
+JetPlane#J1(3): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Helicopter#H3(6): Can't see a thing... hope this isn't a mountain ahead!
+JetPlane#J2(8): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Helicopter#H4(9): Sun's blazing! Perfect day for a tan at 10,000 feet!
+JetPlane#J1(3): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Helicopter#H3(6): Sun's blazing! Perfect day for a tan at 10,000 feet!
+JetPlane#J2(8): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Helicopter#H4(9): Sun's blazing! Perfect day for a tan at 10,000 feet!
+JetPlane#J1(3): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Helicopter#H3(6): It's pouring! Should've brought a bigger windshield wiper!
+JetPlane#J2(8): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Helicopter#H4(9): Sun's blazing! Perfect day for a tan at 10,000 feet!
+JetPlane#J1(3): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Helicopter#H3(6): Can't see a thing... hope this isn't a mountain ahead!
+JetPlane#J2(8): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Helicopter#H4(9): Sun's blazing! Perfect day for a tan at 10,000 feet!
+JetPlane#J1(3): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Helicopter#H3(6): Sun's blazing! Perfect day for a tan at 10,000 feet!
+JetPlane#J2(8): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Helicopter#H4(9): Sun's blazing! Perfect day for a tan at 10,000 feet!
+JetPlane#J1(3): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Helicopter#H3(6): It's pouring! Should've brought a bigger windshield wiper!
+JetPlane#J2(8): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Helicopter#H4(9): Sun's blazing! Perfect day for a tan at 10,000 feet!
+JetPlane#J1(3): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Helicopter#H3(6): Can't see a thing... hope this isn't a mountain ahead!
+JetPlane#J2(8): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Helicopter#H4(9): Sun's blazing! Perfect day for a tan at 10,000 feet!
+JetPlane#J1(3): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Helicopter#H3(6): Sun's blazing! Perfect day for a tan at 10,000 feet!
+JetPlane#J2(8): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Helicopter#H4(9): Sun's blazing! Perfect day for a tan at 10,000 feet!
+JetPlane#J1(3): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Helicopter#H3(6): It's pouring! Should've brought a bigger windshield wiper!
+JetPlane#J2(8): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Helicopter#H4(9): Sun's blazing! Perfect day for a tan at 10,000 feet!
+JetPlane#J1(3): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Helicopter#H3(6): Can't see a thing... hope this isn't a mountain ahead!
+JetPlane#J2(8): It's pouring! Should've brought a bigger windshield wiper!
+Helicopter#H4(9): Sun's blazing! Perfect day for a tan at 10,000 feet!
+JetPlane#J1(3): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Helicopter#H3(6): Sun's blazing! Perfect day for a tan at 10,000 feet!
+JetPlane#J2(8): Can't see a thing... hope this isn't a mountain ahead!
+Helicopter#H4(9): Sun's blazing! Perfect day for a tan at 10,000 feet!
+JetPlane#J1(3): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Helicopter#H3(6): It's pouring! Should've brought a bigger windshield wiper!
+JetPlane#J2(8): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Helicopter#H4(9): Sun's blazing! Perfect day for a tan at 10,000 feet!
+JetPlane#J1(3): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Helicopter#H3(6): Can't see a thing... hope this isn't a mountain ahead!
+JetPlane#J2(8): It's pouring! Should've brought a bigger windshield wiper!
+Helicopter#H4(9): Sun's blazing! Perfect day for a tan at 10,000 feet!
+JetPlane#J1(3): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Helicopter#H3(6): Sun's blazing! Perfect day for a tan at 10,000 feet!
+JetPlane#J2(8): Can't see a thing... hope this isn't a mountain ahead!
+Helicopter#H4(9): Sun's blazing! Perfect day for a tan at 10,000 feet!
+JetPlane#J1(3): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Helicopter#H3(6): It's pouring! Should've brought a bigger windshield wiper!
+JetPlane#J2(8): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Helicopter#H4(9): Sun's blazing! Perfect day for a tan at 10,000 feet!
+JetPlane#J1(3): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Helicopter#H3(6): Can't see a thing... hope this isn't a mountain ahead!
+JetPlane#J2(8): It's pouring! Should've brought a bigger windshield wiper!
+Helicopter#H4(9): Sun's blazing! Perfect day for a tan at 10,000 feet!
+JetPlane#J1(3): Sun's blazing! Perfect day for a tan at 10,000 feet!
+Helicopter#H3(6): Sun's blazing! Perfect day for a tan at 10,000 feet!
+JetPlane#J2(8): Can't see a thing... hope this isn't a mountain ahead!
+Helicopter#H4(9): Sun's blazing! Perfect day for a tan at 10,000 feet!
+```
+
