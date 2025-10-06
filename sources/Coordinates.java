@@ -34,5 +34,7 @@ public class Coordinates {
 
 	public void updateHeight(int update) {
 		this.height += update;
+		if (this.height >= 100)
+			this.height = 100;
 	}
 }
