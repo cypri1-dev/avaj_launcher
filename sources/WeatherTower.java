@@ -11,4 +11,9 @@ public class WeatherTower extends Tower {
 		conditionChanged();
 	}
 
+	@Override
+	public void register(Flyable p_flyable) {
+		super.register(p_flyable);
+		p_flyable.registerTower(this);
+	}
 }
