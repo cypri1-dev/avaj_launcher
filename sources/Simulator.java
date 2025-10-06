@@ -24,27 +24,34 @@ public class Simulator {
 			return;
 
 		Simulator sim = new Simulator();
-		Tower controlTower = new Tower();
+		// Tower controlTower = new Tower();
+		WeatherTower weatherTower = new WeatherTower();
 		List<String> data = new ArrayList<>();
+		// int i = 0;
 
 		file = Parser.readFile(args[0]);
 		if (file == null)
 			return;
 		
-		data = Extractor.checkData(file, sim, controlTower);
+		data = Extractor.checkData(file, sim);
 		if (data == null)
 			return;
 
 		for (String dataLine : data) {
 			String[] lineArray = dataLine.split("\\s+");
-			Extractor.setValues(lineArray, controlTower);
+			Extractor.setValues(lineArray, weatherTower);
+		}
+
+		for (int i = 0; i < sim.getNbSimulation(); ++i) {
+			weatherTower.changeWeather();
+			System.out.println("------------------------------------------------------------------------------------");
 		}
 
 		/* -------------------------------- TESTS PART -------------------------------- */
 
 		System.out.println(DEBUG_BOLD + "sim.nbSimulation: " + sim.getNbSimulation());
 			
-		Coordinates coor = new Coordinates(23, 12, 43);
+		// Coordinates coor = new Coordinates(23, 12, 43);
 		// Helicopter H1 = new Helicopter(1234, "testHelico", coor);
 		// JetPlane J1 = new JetPlane(12345, "testJetPlane", coor);
 		// Baloon B1 = new Baloon(12346, "testBaloon", coor);
@@ -70,7 +77,7 @@ public class Simulator {
 		// System.out.println(DEBUG_BOLD + "latitude: " + B1.coordinates.getLatitude());
 		// System.out.println(DEBUG_BOLD + "height: " + B1.coordinates.getHeight());
 		
-		controlTower.printListRegisteredFlyable();
-		WeatherProvider.getInstance().getCurrentWeather(coor);
+		// controlTower.printListRegisteredFlyable();
+		// WeatherProvider.getInstance().getCurrentWeather(coor);
 	}
 }
