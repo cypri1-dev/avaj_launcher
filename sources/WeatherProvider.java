@@ -16,13 +16,15 @@ public class WeatherProvider {
 	}
 
 	public String getCurrentWeather(Coordinates p_coordinates) {
+		String landed = "LANDED";
 		int meteoNumber = (p_coordinates.getHeight() + p_coordinates.getLatitude() + p_coordinates.getLongitude()) % 4;
+
+		if (meteoNumber == -1)
+			return landed;
+			
 		String currentMeteo = this.weather[meteoNumber];
-
-		System.out.println(DEBUG_BOLD + "meteoNumber: " + meteoNumber);
-		System.out.println(DEBUG_BOLD + "currentMeteo: " + currentMeteo);
-		System.out.println(DEBUG_BOLD + "[height]: " + p_coordinates.getHeight() + " | [latitude]: " + p_coordinates.getLatitude() + " | [longitude]: " + p_coordinates.getLongitude());
-
+		// System.out.println(DEBUG_BOLD + "meteoNumber: " + meteoNumber);
+		// System.out.println(DEBUG_BOLD + "currentMeteo: " + currentMeteo);
 		return currentMeteo;
 	}
 }
