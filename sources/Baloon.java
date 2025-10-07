@@ -50,6 +50,7 @@ public class Baloon extends Aircraft {
 					printToFileTxt(txtLanded, fileOut);
 					this.weatherTower.unregister(this);
 				}
+				break;
 			case("SNOW"):
 				this.coordinates.updateHeight(-15);
 				
