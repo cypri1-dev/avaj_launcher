@@ -103,7 +103,6 @@ Tower says: Baloon#B3(7) registered to weather tower.
 Tower says: JetPlane#J2(8) registered to weather tower.
 Tower says: Helicopter#H4(9) registered to weather tower.
 Baloon#B1(1): Can't see a thing... hope this isn't a mountain ahead!
-Baloon#B1(1): It's snowing like crazy! Turning into a flying popsicle!
 Baloon#B2(2): It's snowing like crazy! Turning into a flying popsicle!
 JetPlane#J1(3): It's snowing like crazy! Turning into a flying popsicle!
 Helicopter#H1(4): It's snowing like crazy! Turning into a flying popsicle!
