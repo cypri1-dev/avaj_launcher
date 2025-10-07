@@ -1,8 +1,8 @@
 package sources;
 
-import static mypackage.Colors.DEBUG_BOLD;
-import static mypackage.Colors.ORANGE_BOLD;
-import static mypackage.Colors.RESET;
+// import static mypackage.Colors.DEBUG_BOLD;
+// import static mypackage.Colors.ORANGE_BOLD;
+// import static mypackage.Colors.RESET;
 
 public class JetPlane extends Aircraft {
 

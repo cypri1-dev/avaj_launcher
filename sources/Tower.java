@@ -16,7 +16,6 @@ public class Tower {
 	public void register(Flyable p_flyable) {
 		
 		String formatName = p_flyable.getType() + "#" + p_flyable.getName() + "(" + p_flyable.getId() + ")";
-		// System.out.println(DEBUG_BOLD + "foramtName: " + RESET + formatName);
 		observers.add(p_flyable);
 		String txt = "Tower says: " + formatName + registerMsg;
 		String fileOut = "simulation.txt";
@@ -45,15 +44,14 @@ public class Tower {
 		}
 	}
 
-protected void conditionChanged() {
-	// need copy !
-	List<Flyable> copyObservers = new ArrayList<>(this.observers);
+	protected void conditionChanged() {
+		// need copy !
+		List<Flyable> copyObservers = new ArrayList<>(this.observers);
 
-	for (Flyable registeredAircraft : copyObservers) {
-		registeredAircraft.updateConditions();
+		for (Flyable registeredAircraft : copyObservers) {
+			registeredAircraft.updateConditions();
 	}
 }
-
 
 	/* PRINTING FUNCTION FOR DEBUG*/
 

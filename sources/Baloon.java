@@ -1,12 +1,8 @@
 package sources;
 
-import static mypackage.Colors.DEBUG_BOLD;
-import static mypackage.Colors.ORANGE_BOLD;
-import static mypackage.Colors.RESET;
-
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+// import static mypackage.Colors.DEBUG_BOLD;
+// import static mypackage.Colors.ORANGE_BOLD;
+// import static mypackage.Colors.RESET;
 
 public class Baloon extends Aircraft {
 
@@ -62,7 +58,6 @@ public class Baloon extends Aircraft {
 				break;
 			default:
 				this.weatherTower.unregister(this);
-				// System.out.println(ORANGE_BOLD + "Landing..." + RESET);
 		}
 		// System.out.println(DEBUG_BOLD + "Aircraft: " + formatName + " [height]: " + this.coordinates.getHeight() + " | [latitude]: " + this.coordinates.getLatitude() + " | [longitude]: " + this.coordinates.getLongitude());
 	}

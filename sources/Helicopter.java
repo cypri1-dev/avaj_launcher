@@ -1,6 +1,6 @@
 package sources;
 
-import static mypackage.Colors.*;
+// import static mypackage.Colors.*;
 
 public class Helicopter extends Aircraft {
 
@@ -48,7 +48,6 @@ public class Helicopter extends Aircraft {
 				break;
 			default:
 				this.weatherTower.unregister(this);
-				// System.out.println(ORANGE_BOLD + "Landing..." + RESET);
 		}
 		// System.out.println(DEBUG_BOLD + "Aircraft: " + formatName + " [height]: " + this.coordinates.getHeight() + " | [latitude]: " + this.coordinates.getLatitude() + " | [longitude]: " + this.coordinates.getLongitude());
 	}

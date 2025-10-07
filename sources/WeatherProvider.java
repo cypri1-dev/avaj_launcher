@@ -1,6 +1,6 @@
 package sources;
 
-import static mypackage.Colors.DEBUG_BOLD;
+// import static mypackage.Colors.DEBUG_BOLD;
 
 public class WeatherProvider {
 

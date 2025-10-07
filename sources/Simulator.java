@@ -20,14 +20,12 @@ public class Simulator {
 	public static void main(String[] args) {
 
 		Scanner file;
-		if (!Parser.checkerArgs(args))
-			return;
-
 		Simulator sim = new Simulator();
-		// Tower controlTower = new Tower();
 		WeatherTower weatherTower = new WeatherTower();
 		List<String> data = new ArrayList<>();
-		// int i = 0;
+		
+		if (!Parser.checkerArgs(args))
+			return;
 
 		file = Parser.readFile(args[0]);
 		if (file == null)
@@ -44,7 +42,6 @@ public class Simulator {
 
 		for (int i = 0; i < sim.getNbSimulation(); ++i) {
 			weatherTower.changeWeather();
-			// System.out.println("------------------------------------------------------------------------------------");
 		}
 	}
 }
